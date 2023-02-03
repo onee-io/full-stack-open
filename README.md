@@ -19,10 +19,10 @@
 ### [Part 1 - React 入门](https://fullstackopen.com/zh/part1)
 > 在这一章节，我们将熟悉一下 React 库，并用它来编写在浏览器中运行的代码。我们还将学习一下 JavaScript 的一些特性，这些特性对理解 React 很重要。
 
-- [ ] [React 简介](https://fullstackopen.com/zh/part1/react_%E7%AE%80%E4%BB%8B)
-- [ ] [JavaScript](https://fullstackopen.com/zh/part1/java_script)
-- [ ] [组件状态，事件处理](https://fullstackopen.com/zh/part1/%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81%EF%BC%8C%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86)
-- [ ] [深入 React 应用调试](https://fullstackopen.com/zh/part1/%E6%B7%B1%E5%85%A5_react_%E5%BA%94%E7%94%A8%E8%B0%83%E8%AF%95)
+- [x] [React 简介](https://fullstackopen.com/zh/part1/react_%E7%AE%80%E4%BB%8B)
+- [x] [JavaScript](https://fullstackopen.com/zh/part1/java_script)
+- [x] [组件状态，事件处理](https://fullstackopen.com/zh/part1/%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81%EF%BC%8C%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86)
+- [x] [深入 React 应用调试](https://fullstackopen.com/zh/part1/%E6%B7%B1%E5%85%A5_react_%E5%BA%94%E7%94%A8%E8%B0%83%E8%AF%95)
 
 ### [Part 2 - 与服务端通信](https://fullstackopen.com/zh/part2)
 > 让我们继续介绍 React。首先，我们将看看如何在屏幕上渲染一个数据集合，比如一个名字的列表。在这之后，我们将探究用户如何使用 HTML 表单向 React 应用提交数据。接下来，我们的重点将转移到查看浏览器中的 JavaScript 代码，看其如何获取和处理存储在远程后端服务器中的数据。最后，我们将快速浏览一下向 React 应用添加 CSS 样式的几个简单方法。
