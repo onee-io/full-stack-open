@@ -4,6 +4,7 @@ import Anecdotes from './part1/Anecdotes';
 import App from './App';
 import Unicafe from './part1/Unicafe';
 import Course from './part2/Course';
+import Phonebook from './part2/Phonebook';
 
 // ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 
@@ -12,4 +13,5 @@ import Course from './part2/Course';
 // ReactDOM.createRoot(document.getElementById('root')).render(<Anecdotes />)
 
 // Part2
-ReactDOM.createRoot(document.getElementById('root')).render(<Course />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<Course />)
+ReactDOM.createRoot(document.getElementById('root')).render(<Phonebook />)
