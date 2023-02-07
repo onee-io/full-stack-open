@@ -104,5 +104,4 @@ const Weather = ({ lat, lng }) => {
     }
 }
 
-
 export default Countries;

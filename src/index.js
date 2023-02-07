@@ -15,5 +15,5 @@ import Countries from './part2/Countries';
 
 // Part2
 // ReactDOM.createRoot(document.getElementById('root')).render(<Course />)
-// ReactDOM.createRoot(document.getElementById('root')).render(<Phonebook />)
-ReactDOM.createRoot(document.getElementById('root')).render(<Countries />)
+ReactDOM.createRoot(document.getElementById('root')).render(<Phonebook />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<Countries />)

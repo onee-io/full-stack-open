@@ -1,25 +1,46 @@
-import { useEffect, useState } from "react"
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import personService from '../services/phonebook';
 
 const Phonebook = () => {
     const [persons, setPersons] = useState([]);
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:3001/persons').then(res => {
-            setPersons(res.data);
+        personService.getAllPerons().then(allPersons => {
+            setPersons(allPersons);
         });
     }, []);
 
     const handleSearch = (event) => setSearch(event.target.value);
     const handleAdd = (newPerson) => {
-        newPerson['id'] = persons.length + 1;
-        setPersons(persons.concat(newPerson));
+        const person = persons.find(item => item.name.toLocaleLowerCase() === newPerson.name.toLocaleLowerCase());
+        if (person) {
+            // 联系人已存在，覆盖更新
+            const isConfirmed = window.confirm(`${newPerson.name} is already added to phonebook, replace the old number with a new one?`);
+            if (isConfirmed) {
+                personService.updatePerson(person.id, newPerson).then(updatedPerson => {
+                    setPersons(persons.map(item => item.id !== person.id ? item : updatedPerson));
+                });
+            }
+        } else {
+            // 联系人不存在，新增
+            personService.createPerson(newPerson).then(createdPerson => {
+                setPersons(persons.concat(createdPerson));
+            });
+        }
+    }
+    const handleDelete = (person) => {
+        const isConfirmed = window.confirm(`Delete ${person.name}`);
+        if (isConfirmed) {
+            personService.deletePerson(person.id).then(() => {
+                setPersons(persons.filter(item => item.id !== person.id));
+            });
+        }
     }
 
     const personsToShow = search.length > 0
-    ? persons.filter(person => person.name.toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) !== -1)
-    : persons
+        ? persons.filter(person => person.name.toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) !== -1)
+        : persons
     return (
         <div>
             <h1>Phonebook</h1>
@@ -27,7 +48,7 @@ const Phonebook = () => {
             <h1>add a new</h1>
             <PersonForm handleAdd={handleAdd} />
             <h1>Numbers</h1>
-            <Persons persons={personsToShow} />
+            <Persons persons={personsToShow} toggleDelete={handleDelete} />
         </div>
     )
 }
@@ -64,14 +85,13 @@ const PersonForm = ({ handleAdd }) => {
     );
 }
 
-const Persons = ({ persons }) => (
+const Persons = ({ persons, toggleDelete }) => (
     <div>
         {persons.map(person =>
-            <Person key={person.id} person={person} />
+            <p key={person.id}>{person.name} {person.number} <button onClick={() => toggleDelete(person)}>delete</button></p>
         )}
     </div>
 )
 
-const Person = ({ person }) => <p>{person.name} {person.number}</p>
 
 export default Phonebook;
