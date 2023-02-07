@@ -90,12 +90,12 @@ const Weather = ({ lat, lng }) => {
         axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`).then(res => {
             setWeather(res.data);
         });
-    }, []);
+    }, [apiKey, lat, lng]);
     if (weather) {
         return (
             <div>
                 <p>temperature {weather.current.temp}℃</p>
-                <img src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`} />
+                <img src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`} alt='weather' />
                 <p>wind {weather.current.wind_speed}m/s</p>
             </div>
         )

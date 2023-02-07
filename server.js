@@ -9,6 +9,7 @@ morgan.token('body', (req, res) => JSON.stringify(req.body));
 app.use(cors()); // 允许跨域请求
 app.use(express.json()); // 用于访问 request 中的 body 属性
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body')); // 记录访问日志
+app.use(express.static('build')); // 优先访问 build 目录下静态资源
 
 let notes = [
     {
