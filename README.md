@@ -27,11 +27,11 @@
 ### [Part 2 - 与服务端通信](https://fullstackopen.com/zh/part2)
 > 让我们继续介绍 React。首先，我们将看看如何在屏幕上渲染一个数据集合，比如一个名字的列表。在这之后，我们将探究用户如何使用 HTML 表单向 React 应用提交数据。接下来，我们的重点将转移到查看浏览器中的 JavaScript 代码，看其如何获取和处理存储在远程后端服务器中的数据。最后，我们将快速浏览一下向 React 应用添加 CSS 样式的几个简单方法。
 
-- [ ] [从渲染集合到模块学习](https://fullstackopen.com/zh/part2/%E4%BB%8E%E6%B8%B2%E6%9F%93%E9%9B%86%E5%90%88%E5%88%B0%E6%A8%A1%E5%9D%97%E5%AD%A6%E4%B9%A0)
-- [ ] [表单](https://fullstackopen.com/zh/part2/%E8%A1%A8%E5%8D%95)
-- [ ] [从服务器获取数据](https://fullstackopen.com/zh/part2/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE)
-- [ ] [在服务端将数据 Alert 出来](https://fullstackopen.com/zh/part2/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%B0%86%E6%95%B0%E6%8D%AE_alert%E5%87%BA%E6%9D%A5)
-- [ ] [给 React 应用加点样式](https://fullstackopen.com/zh/part2/%E7%BB%99_react%E5%BA%94%E7%94%A8%E5%8A%A0%E7%82%B9%E6%A0%B7%E5%BC%8F)
+- [x] [从渲染集合到模块学习](https://fullstackopen.com/zh/part2/%E4%BB%8E%E6%B8%B2%E6%9F%93%E9%9B%86%E5%90%88%E5%88%B0%E6%A8%A1%E5%9D%97%E5%AD%A6%E4%B9%A0)
+- [x] [表单](https://fullstackopen.com/zh/part2/%E8%A1%A8%E5%8D%95)
+- [x] [从服务器获取数据](https://fullstackopen.com/zh/part2/%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE)
+- [x] [在服务端将数据 Alert 出来](https://fullstackopen.com/zh/part2/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%B0%86%E6%95%B0%E6%8D%AE_alert%E5%87%BA%E6%9D%A5)
+- [x] [给 React 应用加点样式](https://fullstackopen.com/zh/part2/%E7%BB%99_react%E5%BA%94%E7%94%A8%E5%8A%A0%E7%82%B9%E6%A0%B7%E5%BC%8F)
 ### [Part 3 - 用 NodeJS 和 Express 写服务端程序](https://fullstackopen.com/zh/part3)
 > 在这一部分，我们的重点转向后端，也就是在堆栈的服务器端实现功能。我们将通过使用 Express 库在 Node.js 中实现一个简单的 REST API，应用的数据将被存储在 MongoDB 数据库中。在这一部分的最后，我们将把我们的应用部署到互联网上。
 

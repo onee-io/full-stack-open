@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Note from "./components/Note";
+import Notification from "./components/Notification";
 import noteService from './services/notes'
 
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
   const [showAll, setShowAll] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     noteService.getAllNotes().then(notes => {
@@ -21,7 +23,10 @@ const App = () => {
     noteService.updateNote(id, updateNote).then(updatedNote => {
       setNotes(notes.map(item => item.id !== id ? item : updatedNote));
     }).catch(error => {
-      alert(`the note '${note.content}' was already deleted from server`);
+      setErrorMessage(`the note '${note.content}' was already deleted from server`);
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 5000);
       setNotes(notes.filter(item => item.id !== id));
     });
   }
@@ -44,6 +49,7 @@ const App = () => {
   return (
     <div>
       <h1>Notes</h1>
+      <Notification message={errorMessage} isSuccess={false} />
       <div>
         <button onClick={() => setShowAll(!showAll)}>
           show {showAll ? 'important' : 'all'}
@@ -62,6 +68,21 @@ const App = () => {
         <input value={newNote} onChange={handleNoteChange} />
         <button onClick={addNote}>save</button>
       </form>
+      <Footer />
+    </div>
+  )
+}
+
+const Footer = () => {
+  const footerStyle = {
+    color: 'green',
+    fontStyle: 'italic',
+    fontSize: 16
+  };
+  return (
+    <div style={footerStyle}>
+      <br />
+      <em>Note app, Department of Computer Science, University of Helsinki 2022</em>
     </div>
   )
 }

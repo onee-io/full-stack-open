@@ -6,6 +6,7 @@ import Unicafe from './part1/Unicafe';
 import Course from './part2/Course';
 import Phonebook from './part2/Phonebook';
 import Countries from './part2/Countries';
+import './index.css'
 
 // ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 

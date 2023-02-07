@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import Notification from "../components/Notification";
 import personService from '../services/phonebook';
 
 const Phonebook = () => {
     const [persons, setPersons] = useState([]);
     const [search, setSearch] = useState('');
+    const [message, setMessage] = useState(null);
+    const [isSuccess, setIsSuccess] = useState(true);
 
     useEffect(() => {
         personService.getAllPerons().then(allPersons => {
@@ -20,12 +23,29 @@ const Phonebook = () => {
             if (isConfirmed) {
                 personService.updatePerson(person.id, newPerson).then(updatedPerson => {
                     setPersons(persons.map(item => item.id !== person.id ? item : updatedPerson));
+                    setIsSuccess(true);
+                    setMessage(`${updatedPerson.name} is updated`);
+                    setTimeout(() => {
+                        setMessage(null);
+                    }, 3000);
+                }).catch(error => {
+                    setPersons(persons.filter(item => item.id !== person.id));
+                    setIsSuccess(false);
+                    setMessage(`Infomation of ${person.name} has already heen removed from server`);
+                    setTimeout(() => {
+                        setMessage(null);
+                    }, 3000);
                 });
             }
         } else {
             // 联系人不存在，新增
             personService.createPerson(newPerson).then(createdPerson => {
                 setPersons(persons.concat(createdPerson));
+                setIsSuccess(true);
+                setMessage(`Added ${createdPerson.name}`);
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
             });
         }
     }
@@ -33,6 +53,8 @@ const Phonebook = () => {
         const isConfirmed = window.confirm(`Delete ${person.name}`);
         if (isConfirmed) {
             personService.deletePerson(person.id).then(() => {
+                setPersons(persons.filter(item => item.id !== person.id));
+            }).catch(error => {
                 setPersons(persons.filter(item => item.id !== person.id));
             });
         }
@@ -44,6 +66,7 @@ const Phonebook = () => {
     return (
         <div>
             <h1>Phonebook</h1>
+            <Notification message={message} isSuccess={isSuccess} />
             <Filter search={search} handleSearch={handleSearch} />
             <h1>add a new</h1>
             <PersonForm handleAdd={handleAdd} />
