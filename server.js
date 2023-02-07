@@ -1,10 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 
 morgan.token('body', (req, res) => JSON.stringify(req.body));
 
+app.use(cors()); // 允许跨域请求
 app.use(express.json()); // 用于访问 request 中的 body 属性
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body')); // 记录访问日志
 
