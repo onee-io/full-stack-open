@@ -1,0 +1,37 @@
+GET http://127.0.0.1:3001/api/notes
+
+###
+
+POST http://127.0.0.1:3001/api/notes
+Content-Type: application/json
+
+{
+    "content": "VS Code REST Client is pretty good",
+    "important": true
+}
+
+###
+
+GET http://127.0.0.1:3001/info
+
+###
+
+GET http://127.0.0.1:3001/api/persons
+
+###
+
+GET http://127.0.0.1:3001/api/persons/4
+
+###
+
+DELETE http://127.0.0.1:3001/api/persons/5
+
+###
+
+POST http://127.0.0.1:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "onee",
+    "number": "123456"
+}
