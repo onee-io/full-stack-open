@@ -16,7 +16,7 @@ const Phonebook = () => {
 
     const handleSearch = (event) => setSearch(event.target.value);
     const handleAdd = (newPerson) => {
-        const person = persons.find(item => item.name.toLocaleLowerCase() === newPerson.name.toLocaleLowerCase());
+        const person = persons.find(item => item.name === newPerson.name);
         if (person) {
             // 联系人已存在，覆盖更新
             const isConfirmed = window.confirm(`${newPerson.name} is already added to phonebook, replace the old number with a new one?`);
@@ -43,6 +43,12 @@ const Phonebook = () => {
                 setPersons(persons.concat(createdPerson));
                 setIsSuccess(true);
                 setMessage(`Added ${createdPerson.name}`);
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }).catch(error => {
+                setIsSuccess(false);
+                setMessage(error.response.data.error);
                 setTimeout(() => {
                     setMessage(null);
                 }, 3000);

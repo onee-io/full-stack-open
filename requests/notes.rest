@@ -6,7 +6,7 @@ GET http://127.0.0.1:3001/api/notes/63e35414bab1acf1113d24c2
 
 ###
 
-DELETE http://127.0.0.1:3001/api/notes/63e35414bab1acf1113d24c2
+DELETE http://127.0.0.1:3001/api/notes/63e367184ae55e7c99e59026
 
 ###
 
@@ -14,16 +14,16 @@ POST http://127.0.0.1:3001/api/notes
 Content-Type: application/json
 
 {
-    "content": "VS Code REST Client is pretty good",
+    "content": "VS Code REST Client is pretty good good good",
     "important": true
 }
 
 ### 
 
-PUT http://127.0.0.1:3001/api/notes/63e35414bab1acf1113d24c2
+PUT http://127.0.0.1:3001/api/notes/63e367184ae55e7c99e59026
 Content-Type: application/json
 
 {
-    "content": "VS Code REST Client is very pretty good",
+    "content": "VS1111",
     "important": false
 }

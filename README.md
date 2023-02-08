@@ -42,7 +42,7 @@
 - [x] [Node.js 与 Express](https://fullstackopen.com/zh/part3/node_js_%E4%B8%8E_express)
 - [x] [把应用部署到网上](https://fullstackopen.com/zh/part3/%E6%8A%8A%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2%E5%88%B0%E7%BD%91%E4%B8%8A)
 - [x] [将数据存入 MongoDB](https://fullstackopen.com/zh/part3/%E5%B0%86%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5_mongo_db)
-- [ ] [ESLint 与代码检查](https://fullstackopen.com/zh/part3/es_lint%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5)
+- [x] [ESLint 与代码检查](https://fullstackopen.com/zh/part3/es_lint%E4%B8%8E%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5)
 ### [Part 4 - 测试 Express 服务端程序, 以及用户管理](https://fullstackopen.com/zh/part4)
 > 在这一部分，我们将继续我们在后台的工作。我们的第一大主题将是为后端编写单元和集成测试。在我们完成测试后，我们将看看如何实现用户认证和授权。
 
