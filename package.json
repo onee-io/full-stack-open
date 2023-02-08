@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/index.js",
     "start:react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -p3001 --watch db.json",
-    "dev": "nodemon server.js",
+    "server": "json-server -p3001 --watch server/db.json",
+    "dev": "nodemon server/index.js",
     "lint": "eslint ."
   },
   "dependencies": {

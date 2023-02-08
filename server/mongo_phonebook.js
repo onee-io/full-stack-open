@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const logger = require('./utils/logger');
 
 if (process.argv.length < 3) {
-    console.log('Please provide the password as an argument: node mongo.js <password>');
+    logger.info('Please provide the password as an argument: node mongo.js <password>');
     process.exit(1);
 }
 
@@ -24,14 +25,14 @@ if (process.argv.length === 5) {
     const number = process.argv[4];
     const person = new Person({ name, number });
     person.save().then(() => {
-        console.log(`Added ${name} number ${number} to phonebook`);
+        logger.info(`Added ${name} number ${number} to phonebook`);
         mongoose.connection.close();
     });
 } else {
     // 查询所有数据
     Person.find({}).then(result => {
         result.forEach(person => {
-            console.log(person);
+            logger.info(person);
         });
         mongoose.connection.close();
     });

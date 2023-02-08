@@ -1,4 +1,4 @@
-const { mongoose } = require('./mongoose');
+const mongoose = require('mongoose');
 
 // 定义数据结构
 const noteSchema = new mongoose.Schema({

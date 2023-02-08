@@ -1,0 +1,9 @@
+require('dotenv').config();
+
+// 服务启动端口
+const PORT = process.env.PORT;
+
+// MongoDB 连接字符串
+const MONGODB_URI = process.env.MONGODB_URI;
+
+module.exports = { PORT, MONGODB_URI };
