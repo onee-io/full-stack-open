@@ -1,0 +1,33 @@
+GET http://127.0.0.1:3001/info
+
+###
+
+GET http://127.0.0.1:3001/api/persons
+
+###
+
+GET http://127.0.0.1:3001/api/persons/63e35e86cfdccc65f6c50bbc
+
+###
+
+DELETE http://127.0.0.1:3001/api/persons/63e3601654de8e53326b7647
+
+###
+
+POST http://127.0.0.1:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "onee",
+    "number": "010-12345678"
+}
+
+###
+
+PUT http://127.0.0.1:3001/api/persons/63e35e86cfdccc65f6c50bbc
+Content-Type: application/json
+
+{
+    "name": "onee",
+    "number": "010-87654321"
+}

@@ -2,6 +2,14 @@ GET http://127.0.0.1:3001/api/notes
 
 ###
 
+GET http://127.0.0.1:3001/api/notes/63e35414bab1acf1113d24c2
+
+###
+
+DELETE http://127.0.0.1:3001/api/notes/63e35414bab1acf1113d24c2
+
+###
+
 POST http://127.0.0.1:3001/api/notes
 Content-Type: application/json
 
@@ -10,28 +18,12 @@ Content-Type: application/json
     "important": true
 }
 
-###
+### 
 
-GET http://127.0.0.1:3001/info
-
-###
-
-GET http://127.0.0.1:3001/api/persons
-
-###
-
-GET http://127.0.0.1:3001/api/persons/4
-
-###
-
-DELETE http://127.0.0.1:3001/api/persons/5
-
-###
-
-POST http://127.0.0.1:3001/api/persons
+PUT http://127.0.0.1:3001/api/notes/63e35414bab1acf1113d24c2
 Content-Type: application/json
 
 {
-    "name": "onee",
-    "number": "123456"
+    "content": "VS Code REST Client is very pretty good",
+    "important": false
 }
