@@ -2,11 +2,12 @@
 
 深入浅出现代 Web 编程 —— 全栈公开课，此仓库仅用于个人学习记录跟踪，并非课程仓库，在下方学习进度中可总览课程内容并跳转至对应章节课程。
 
+👉 官网：[https://fullstackopen.com](https://fullstackopen.com/zh/)
+
+👉 Demo：[https://easy-plum-chimpanzee-belt.cyclic.app](https://easy-plum-chimpanzee-belt.cyclic.app/)
 ## 课程简介
 
 一站式学习 React, Redux, Node.js, MongoDB, GraphQL 以及 TypeScript！这门课程会向你介绍基于 JavaScript 的现代 Web 开发技术。重点是利用 ReactJS 搭建单页面应用程序（SPA：Single Page Application），并使用 Node.js 构建 REST API。
-
-👉 官网：[https://fullstackopen.com](https://fullstackopen.com/zh/)
 
 ## 学习进度
 
