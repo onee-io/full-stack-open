@@ -5,6 +5,7 @@ const middleware = require('./utils/middleware');
 const commonRouter = require('./controllers/common');
 const notesRouter = require('./controllers/notes');
 const phonebookRouter = require('./controllers/phonebook');
+const blogsRouter = require('./controllers/blogs');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :b
 app.use('/', commonRouter);
 app.use('/api/notes', notesRouter);
 app.use('/api/persons', phonebookRouter);
+app.use('/api/blogs', blogsRouter);
 
 // 配置路由后中间件
 app.use(middleware.unknownEndpoint); // 处理未知路由

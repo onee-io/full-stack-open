@@ -19,6 +19,8 @@ const personSchema = new mongoose.Schema({
         required: true
     }
 });
+
+// 指定 json 格式
 personSchema.set('toJSON', {
     transform: (document, returnObject) => {
         returnObject.id = document._id.toString();

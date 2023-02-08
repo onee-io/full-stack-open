@@ -1,0 +1,13 @@
+GET http://127.0.0.1:3001/api/blogs
+
+###
+
+POST http://127.0.0.1:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "What's different about cyclic?",
+    "author": "cyclic.sh",
+    "url": "https://docs.cyclic.sh/",
+    "likes": 10086
+}

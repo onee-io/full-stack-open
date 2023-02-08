@@ -13,6 +13,8 @@ const noteSchema = new mongoose.Schema({
     },
     important: Boolean,
 });
+
+// 指定 json 格式
 noteSchema.set('toJSON', {
     transform: (document, returnObject) => {
         returnObject.id = document._id.toString();
