@@ -6,7 +6,7 @@ POST http://127.0.0.1:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "root",
+    "username": "root1",
     "name": "Superuser",
-    "password": "salainen"
+    "password": "salainen1"
 }

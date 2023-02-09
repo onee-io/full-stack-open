@@ -4,6 +4,7 @@ GET http://127.0.0.1:3001/api/blogs
 
 POST http://127.0.0.1:3001/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzZTQ5ODAwYzdhMWU3MzNjYmI4OGNiMCIsImlhdCI6MTY3NTkzNjU2MSwiZXhwIjoxNjc1OTQwMTYxfQ.PHLFpNEjS-OQRssk1JvFqE_5fQwqp1CIjZ5tuQ-ORxQ
 
 {
     "title": "What's different about cyclic?",
@@ -15,6 +16,7 @@ Content-Type: application/json
 ### 
 PUT http://127.0.0.1:3001/api/blogs/63e38c272c3f537bd6e12508
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzZTQ5ODAwYzdhMWU3MzNjYmI4OGNiMCIsImlhdCI6MTY3NTkzNjU2MSwiZXhwIjoxNjc1OTQwMTYxfQ.PHLFpNEjS-OQRssk1JvFqE_5fQwqp1CIjZ5tuQ-ORxQ
 
 {
     "title": "What's different about cyclic?",

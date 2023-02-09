@@ -7,9 +7,16 @@ const app = require('../app');
 
 const api = supertest(app);
 
+let token = null;
+
 beforeAll(async () => {
     mongoose.set('strictQuery', true);
     await mongoose.connect(config.MONGODB_URI);
+    const response = await api.post('/api/login').send({
+        username: 'root',
+        password: 'sekret'
+    });
+    token = response.body.token;
 }, 100000);
 
 beforeEach(async () => {
@@ -69,6 +76,7 @@ describe('创建博客', () => {
             likes: 0
         };
         await api.post('/api/blogs')
+            .auth(token, { type: 'bearer' })
             .send(newBlog)
             .expect(201)
             .expect('Content-Type', /application\/json/);
@@ -78,6 +86,20 @@ describe('创建博客', () => {
         expect(titles).toContain(newBlog.title);
     });
 
+    test('创建博客时未授权', async () => {
+        const newBlog = {
+            title: 'toBeDefined',
+            author: 'jest',
+            url: 'https://jestjs.io/docs/expect#tobedefined',
+            likes: 0
+        };
+        await api.post('/api/blogs')
+            .send(newBlog)
+            .expect(401);
+        const blogsAtEnd = await helper.blogsInDb();
+        expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length);
+    });
+
     test('创建博客缺失 likes 值时默认为 0', async () => {
         const newBlog = {
             title: 'likes is 0',
@@ -85,6 +107,7 @@ describe('创建博客', () => {
             url: 'https://jestjs.io/docs/expect#tobedefined'
         };
         await api.post('/api/blogs')
+            .auth(token, { type: 'bearer' })
             .send(newBlog)
             .expect(201)
             .expect('Content-Type', /application\/json/);
@@ -99,6 +122,7 @@ describe('创建博客', () => {
             likes: 0
         };
         await api.post('/api/blogs')
+            .auth(token, { type: 'bearer' })
             .send(newBlog)
             .expect(400);
         const blogsAtEnd = await helper.blogsInDb();
@@ -112,7 +136,9 @@ describe('更新博客', () => {
         const blogs = await helper.blogsInDb();
         const blogToUpdate = blogs[0];
         expect(updateBlog.author).not.toBe(blogToUpdate.author);
-        const resultBlog = await api.put(`/api/blogs/${blogToUpdate.id}`).send(updateBlog)
+        const resultBlog = await api.put(`/api/blogs/${blogToUpdate.id}`)
+            .auth(token, { type: 'bearer' })
+            .send(updateBlog)
             .expect(200)
             .expect('Content-Type', /application\/json/);
         expect(resultBlog.body.author).toBe(updateBlog.author);
@@ -124,18 +150,44 @@ describe('更新博客', () => {
     test('更新不存在的博客', async () => {
         const validExistingId = await helper.nonExistingId();
         const updateBlog = { author: 'onee' };
-        await api.put(`/api/blogs/${validExistingId}`).send(updateBlog).expect(404);
+        await api.put(`/api/blogs/${validExistingId}`)
+            .auth(token, { type: 'bearer' })
+            .send(updateBlog)
+            .expect(404);
     });
 });
 
 describe('删除博客', () => {
-    test('删除已存在的博客', async () => {
+    test('删除本人的博客', async () => {
+        const blogsAtInit = await helper.blogsInDb();
+        const newBlog = {
+            title: 'toBeDefined',
+            author: 'jest',
+            url: 'https://jestjs.io/docs/expect#tobedefined',
+            likes: 0
+        };
+        await api.post('/api/blogs')
+            .auth(token, { type: 'bearer' })
+            .send(newBlog)
+            .expect(201)
+            .expect('Content-Type', /application\/json/);
         const blogsAtStart = await helper.blogsInDb();
-        await api.delete(`/api/blogs/${blogsAtStart[0].id}`).expect(204);
+        expect(blogsAtStart).toHaveLength(blogsAtInit.length + 1);
+        await api.delete(`/api/blogs/${blogsAtStart[blogsAtStart.length - 1].id}`)
+            .auth(token, { type: 'bearer' })
+            .expect(204);
         const blogsAtEnd = await helper.blogsInDb();
         expect(blogsAtEnd).toHaveLength(blogsAtStart.length - 1);
         const urls = blogsAtEnd.map(blog => blog.url);
-        expect(urls).not.toContain(blogsAtStart[0].url);
+        expect(urls).not.toContain(blogsAtStart[blogsAtStart.length - 1].url);
+    });
+    test('删除非本人的博客', async () => {
+        const blogsAtStart = await helper.blogsInDb();
+        await api.delete(`/api/blogs/${blogsAtStart[0].id}`)
+            .auth(token, { type: 'bearer' })
+            .expect(403);
+        const blogsAtEnd = await helper.blogsInDb();
+        expect(blogsAtEnd).toHaveLength(blogsAtStart.length);
     });
 });
 

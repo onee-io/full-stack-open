@@ -12,20 +12,20 @@ DELETE http://127.0.0.1:3001/api/notes/63e38c272c3f537bd6e12508
 
 POST http://127.0.0.1:3001/api/notes
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzZTQ5ODAwYzdhMWU3MzNjYmI4OGNiMCIsImlhdCI6MTY3NTkyNzcyN30.umq8yxF1nLG9PgospV__ha8huaD5FMx3wYdVuH9mcW8
 
 {
-    "content": "VS Code REST Client is pretty good good good",
-    "important": true,
-    "userId": "63e49800c7a1e733cbb88cb0"
+    "content": "VS Code REST Client is pretty good good good with auth",
+    "important": true
 }
 
 ### 
 
 PUT http://127.0.0.1:3001/api/notes/63e38c272c3f537bd6e12508
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzZTQ5ODAwYzdhMWU3MzNjYmI4OGNiMCIsImlhdCI6MTY3NTkyNzcyN30.umq8yxF1nLG9PgospV__ha8huaD5FMx3wYdVuH9mcW8
 
 {
     "content": "VS1111",
-    "important": false,
-    "userId": "63e49800c7a1e733cbb88cb0"
+    "important": false
 }

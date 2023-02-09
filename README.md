@@ -49,7 +49,7 @@
 - [x] [从后端结构到测试入门](https://fullstackopen.com/zh/part4/%E4%BB%8E%E5%90%8E%E7%AB%AF%E7%BB%93%E6%9E%84%E5%88%B0%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8)
 - [x] [测试后端应用](https://fullstackopen.com/zh/part4/%E6%B5%8B%E8%AF%95%E5%90%8E%E7%AB%AF%E5%BA%94%E7%94%A8)
 - [x] [用户管理](https://fullstackopen.com/zh/part4/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86)
-- [ ] [密钥认证](https://fullstackopen.com/zh/part4/%E5%AF%86%E9%92%A5%E8%AE%A4%E8%AF%81)
+- [x] [密钥认证](https://fullstackopen.com/zh/part4/%E5%AF%86%E9%92%A5%E8%AE%A4%E8%AF%81)
 
 ### [Part 5 - 测试 React 应用](https://fullstackopen.com/zh/part5)
 > 在这一部分，我们回到前端，首先看一下测试 React 代码的不同可能性。 我们还将实现基于令牌的认证，这将使用户能够登录到我们的应用。
