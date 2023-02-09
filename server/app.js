@@ -7,6 +7,7 @@ const commonRouter = require('./controllers/common');
 const notesRouter = require('./controllers/notes');
 const phonebookRouter = require('./controllers/phonebook');
 const blogsRouter = require('./controllers/blogs');
+const usersRouter = require('./controllers/users');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/', commonRouter);
 app.use('/api/notes', notesRouter);
 app.use('/api/persons', phonebookRouter);
 app.use('/api/blogs', blogsRouter);
+app.use('/api/users', usersRouter);
 
 // 配置路由后中间件
 app.use(middleware.unknownEndpoint); // 处理未知路由

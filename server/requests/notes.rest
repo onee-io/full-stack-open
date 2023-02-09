@@ -15,7 +15,8 @@ Content-Type: application/json
 
 {
     "content": "VS Code REST Client is pretty good good good",
-    "important": true
+    "important": true,
+    "userId": "63e49800c7a1e733cbb88cb0"
 }
 
 ### 
@@ -25,5 +26,6 @@ Content-Type: application/json
 
 {
     "content": "VS1111",
-    "important": false
+    "important": false,
+    "userId": "63e49800c7a1e733cbb88cb0"
 }
