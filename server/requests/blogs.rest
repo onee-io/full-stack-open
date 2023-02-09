@@ -11,3 +11,14 @@ Content-Type: application/json
     "url": "https://docs.cyclic.sh/",
     "likes": 10086
 }
+
+### 
+PUT http://127.0.0.1:3001/api/blogs/63e38c272c3f537bd6e12508
+Content-Type: application/json
+
+{
+    "title": "What's different about cyclic?",
+    "author": "cyclic.sh",
+    "url": "https://docs.cyclic.sh/",
+    "likes": 10010
+}
