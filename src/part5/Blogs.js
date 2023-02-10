@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import loginService from "../services/login";
 import blogsService from "../services/blogs";
 import Blog from "../components/Blog";
 import Notification from "../components/Notification";
+import Togglable from "../components/Togglable";
+import LoginForm from "../components/LoginForm";
 
 const Blogs = () => {
     const [user, setUser] = useState(null);
@@ -66,30 +68,6 @@ const Blogs = () => {
     );
 }
 
-const LoginForm = ({ handleLogin }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        await handleLogin(username, password);
-        setUsername('');
-        setPassword('');
-    };
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    username <input type='text' value={username} onChange={({ target }) => setUsername(target.value)} />
-                </div>
-                <div>
-                    password <input type='password' value={password} onChange={({ target }) => setPassword(target.value)} />
-                </div>
-                <button type="submit">login</button>
-            </form>
-        </div>
-    );
-}
-
 const BlogList = ({ onBlogCreated }) => {
     const [blogs, setBlogs] = useState([]);
     // 加载博客列表
@@ -100,16 +78,34 @@ const BlogList = ({ onBlogCreated }) => {
         }
         fetchBlogs();
     }, []);
+    // 创建组件引用
+    const blogFromRef = useRef();
     // 处理博客创建事件
-    const handleCreated = (createdBlog) => {
+    const handleCreated = createdBlog => {
         setBlogs(blogs.concat(createdBlog));
         onBlogCreated(createdBlog);
+        blogFromRef.current.toggleVisibility(); // 隐藏表单
     };
+    // 处理博客更新事件
+    const handleUpdated = updatedBlog => {
+        setBlogs(blogs.map(blog => blog.id !== updatedBlog.id ? blog : updatedBlog));
+    }
+    // 处理博客删除事件
+    const handleDeleted = deletedBlogId => {
+        setBlogs(blogs.filter(blog => blog.id !== deletedBlogId));
+    }
     return (
         <div>
-            <CreateBlogForm handleCreated={handleCreated} />
-            {blogs.map(blog =>
-                <Blog key={blog.id} blog={blog} />
+            <Togglable buttonLabel='new note' ref={blogFromRef}>
+                <CreateBlogForm handleCreated={handleCreated} />
+            </Togglable>
+            {blogs.sort((a, b) => b.likes - a.likes).map(blog =>
+                <Blog
+                    key={blog.id}
+                    blog={blog}
+                    onUpadte={handleUpdated}
+                    onDelete={handleDeleted}
+                />
             )}
         </div>
     );
@@ -124,6 +120,9 @@ const CreateBlogForm = ({ handleCreated }) => {
         event.preventDefault();
         const createdBlog = await blogsService.createBlog({ title, author, url });
         handleCreated(createdBlog);
+        setTitle('');
+        setAuthor('');
+        setUrl('');
     }
     return (
         <div>

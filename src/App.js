@@ -1,24 +1,30 @@
-import { useEffect, useState } from "react";
-import Note from "./components/Note";
-import Notification from "./components/Notification";
+import { useEffect, useRef, useState } from 'react';
+import Note from './components/Note';
+import Notification from './components/Notification';
 import noteService from './services/notes';
 import loginService from './services/login';
+import Togglable from "./components/Togglable";
+import LoginForm from './components/LoginForm';
 
 const App = () => {
     const [notes, setNotes] = useState([]);
-    const [newNote, setNewNote] = useState('');
     const [showAll, setShowAll] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [user, setUser] = useState(null);
-
+    const [user, setUser] = useState(null); 
+    // 通知控制
+    const showErrorMessage = (_message) => {
+        setErrorMessage(_message);
+        setTimeout(() => {
+            setErrorMessage(null);
+        }, 3000);
+    }
+    // 加载笔记列表
     useEffect(() => {
         noteService.getAllNotes().then(notes => {
             setNotes(notes);
         });
     }, []);
-
+    // 加载用户信息
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser');
         if (loggedUserJSON) {
@@ -27,100 +33,52 @@ const App = () => {
             noteService.setToken(user.token);
         }
     }, []);
-
-    const handleNoteChange = (event) => setNewNote(event.target.value);
-
-    const handleLogin = async (event) => {
-        event.preventDefault();
+    // 处理登录事件
+    const handleLogin = async (username, password) => {
         try {
             const user = await loginService.login({ username, password });
             window.localStorage.setItem('loggedNoteappUser', JSON.stringify(user));
             noteService.setToken(user.token);
             setUser(user);
-            setUsername('');
-            setPassword('');
         } catch (exception) {
-            setErrorMessage('Wrong credentials')
-            setTimeout(() => {
-                setErrorMessage(null)
-            }, 5000);
+            showErrorMessage('Wrong credentials');
         }
     }
-
-    const toggleImportanceOf = (id) => {
+    // 切换笔记是否重要
+    const toggleImportanceOf = async id => {
         const note = notes.find(item => item.id === id);
         const updateNote = { ...note, important: !note.important };
-        noteService.updateNote(id, updateNote).then(updatedNote => {
+        try {
+            const updatedNote = await noteService.updateNote(id, updateNote);
             setNotes(notes.map(item => item.id !== id ? item : updatedNote));
-        }).catch(error => {
-            setErrorMessage(`the note '${note.content}' was already deleted from server`);
-            setTimeout(() => {
-                setErrorMessage(null);
-            }, 5000);
+        } catch (error) {
+            showErrorMessage(`the note '${note.content}' was already deleted from server`);
             setNotes(notes.filter(item => item.id !== id));
-        });
+        }
     }
-
-    const addNote = (event) => {
-        event.preventDefault();
-        const newObject = {
-            content: newNote,
-            date: new Date().toISOString(),
-            important: Math.random() < 0.5
-        };
-        noteService.createNote(newObject).then(note => {
-            setNotes(notes.concat(note));
-            setNewNote('');
-        }).catch(error => {
-            setErrorMessage(error.response.data.error);
-            setTimeout(() => {
-                setErrorMessage(null);
-            }, 5000);
-        });
-    }
-
+    // 过滤待展示的笔记
     const notesToShow = showAll ? notes : notes.filter(note => note.important);
-
-    const loginForm = () => (
-        <form onSubmit={handleLogin}>
-            <div>
-                username
-                <input
-                    type='text'
-                    value={username}
-                    name='Username'
-                    onChange={({ target }) => setUsername(target.value)}
-                />
-            </div>
-            <div>
-                password
-                <input
-                    type='password'
-                    value={password}
-                    name='Password'
-                    onChange={({ target }) => setPassword(target.value)}
-                />
-            </div>
-            <button type="submit">login</button>
-        </form>
-    );
-
-    const noteForm = () => (
-        <form onSubmit={addNote}>
-            <input value={newNote} onChange={handleNoteChange} />
-            <button onClick={addNote}>save</button>
-        </form>
-    );
-
+    // 创建组件引用
+    const noteFormRef = useRef();
+    // 处理笔记创建事件
+    const addNote = async (noteObject) => {
+        noteFormRef.current.toggleVisibility(); // 触发组件显隐
+        const returnedNote = await noteService.createNote(noteObject);
+        setNotes(notes.concat(returnedNote));
+    }
     return (
         <div>
             <h1>Notes</h1>
             <Notification message={errorMessage} isSuccess={false} />
             {user === null
-                ? loginForm()
+                ? <LoginForm handleLogin={handleLogin} />
                 : <div>
                     <p>{user.name} logged-in</p>
-                    {noteForm()}
+                    {
+                        <Togglable buttonLabel='new note' ref={noteFormRef}>
+                            <NoteForm createNote={addNote} />
+                        </Togglable>
+                    }
                 </div>
             }
             <div>
@@ -140,6 +98,29 @@ const App = () => {
             <Footer />
         </div>
     )
+}
+
+const NoteForm = ({ createNote }) => {
+    const [newNote, setNewNote] = useState('');
+    const handleNoteChange = (event) => setNewNote(event.target.value);
+    // 处理笔记创建事件
+    const addNote = async (event) => {
+        event.preventDefault();
+        await createNote({
+            content: newNote,
+            important: Math.random() < 0.5
+        });
+        setNewNote('');
+    }
+    return (
+        <div>
+            <h2>Create a new note</h2>
+            <form onSubmit={addNote}>
+                <input value={newNote} onChange={handleNoteChange} />
+                <button type='submit'>save</button>
+            </form>
+        </div>
+    );
 }
 
 const Footer = () => {

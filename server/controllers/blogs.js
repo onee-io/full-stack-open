@@ -15,7 +15,7 @@ blogsRouter.get('/:id', middleware.userExtractor, async (request, response) => {
     const blog = await Blog.findOne({
         _id: request.params.id,
         user: user._id
-    });
+    }).populate('user', { username: 1, name: 1 });
     if (blog) {
         response.json(blog);
     } else {
@@ -25,15 +25,22 @@ blogsRouter.get('/:id', middleware.userExtractor, async (request, response) => {
 
 blogsRouter.post('/', middleware.userExtractor, async (request, response) => {
     const user = request.user;
-    const blog = new Blog({
+    // 创建博客
+    const newBlog = new Blog({
         ...request.body,
         user: user._id,
         likes: request.body.likes || 0
     });
-    const savedBlog = await blog.save();
+    const savedBlog = await newBlog.save();
+    // 更新用户博客列表
     user.blogs = user.blogs.concat(savedBlog._id);
     await user.save();
-    response.status(201).json(savedBlog);
+    // 关联查询创建的博客
+    const blog = await Blog.findOne({
+        _id: savedBlog._id,
+        user: user._id
+    }).populate('user', { username: 1, name: 1 });
+    response.status(201).json(blog);
 });
 
 blogsRouter.delete('/:id', middleware.userExtractor, async (request, response) => {
@@ -47,13 +54,20 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response) =
 });
 
 blogsRouter.put('/:id', middleware.userExtractor, async (request, response) => {
+    const user = request.user;
+    // 更新博客
     const updatedBlog = await Blog.findByIdAndUpdate(
         request.params.id,
         request.body,
         { new: true, runValidators: true, context: 'query' }
     );
     if (updatedBlog) {
-        response.json(updatedBlog);
+        // 查询更新后的博客
+        const blog = await Blog.findOne({
+            _id: request.params.id,
+            user: user._id
+        }).populate('user', { username: 1, name: 1 });
+        response.json(blog);
     } else {
         response.status(404).end();
     }
