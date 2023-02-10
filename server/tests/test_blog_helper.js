@@ -64,6 +64,18 @@ const nonExistingId = async () => {
     return blog._id.toString();
 };
 
+// 生成一个无用户所属的博客
+const nonUserBlog = async () => {
+    const blog = new Blog({
+        title: 'willremovethissoon',
+        author: 'willremovethissoon',
+        url: 'https://willremovethissoon.com',
+        likes: 0
+    });
+    await blog.save();
+    return blog._id;
+};
+
 // 返回数据库中所有博客
 const blogsInDb = async () => {
     const blogs = await Blog.find({});
@@ -73,5 +85,6 @@ const blogsInDb = async () => {
 module.exports = {
     initialBlogs,
     nonExistingId,
+    nonUserBlog,
     blogsInDb
 };

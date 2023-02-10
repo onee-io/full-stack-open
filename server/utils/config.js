@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 // 服务启动端口
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT;
 
 // MongoDB 连接字符串
 const MONGODB_URI = process.env.NODE_ENV === 'test'

@@ -4,7 +4,7 @@ GET http://127.0.0.1:3001/api/blogs
 
 POST http://127.0.0.1:3001/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzZTQ5ODAwYzdhMWU3MzNjYmI4OGNiMCIsImlhdCI6MTY3NTkzNjU2MSwiZXhwIjoxNjc1OTQwMTYxfQ.PHLFpNEjS-OQRssk1JvFqE_5fQwqp1CIjZ5tuQ-ORxQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9uZWUiLCJpZCI6IjYzZTVhOWU0MzhkZGE4ODdmZGEyNTRlNSIsImlhdCI6MTY3NTk5NjM2MiwiZXhwIjoxNjc1OTk5OTYyfQ.5tYhd_eRSjR5Zb63jTQ4jsuwuGl0d8UmtH67F7i-X-k
 
 {
     "title": "What's different about cyclic?",
@@ -16,7 +16,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb
 ### 
 PUT http://127.0.0.1:3001/api/blogs/63e38c272c3f537bd6e12508
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzZTQ5ODAwYzdhMWU3MzNjYmI4OGNiMCIsImlhdCI6MTY3NTkzNjU2MSwiZXhwIjoxNjc1OTQwMTYxfQ.PHLFpNEjS-OQRssk1JvFqE_5fQwqp1CIjZ5tuQ-ORxQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9uZWUiLCJpZCI6IjYzZTVhOWU0MzhkZGE4ODdmZGEyNTRlNSIsImlhdCI6MTY3NTk5NjM2MiwiZXhwIjoxNjc1OTk5OTYyfQ.5tYhd_eRSjR5Zb63jTQ4jsuwuGl0d8UmtH67F7i-X-k
 
 {
     "title": "What's different about cyclic?",

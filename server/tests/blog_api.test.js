@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Blog = require('../models/blog');
+const User = require('../models/user');
 const config = require('../utils/config');
 const supertest = require('supertest');
 const helper = require('./test_blog_helper');
@@ -8,6 +9,7 @@ const app = require('../app');
 const api = supertest(app);
 
 let token = null;
+let user = null;
 
 beforeAll(async () => {
     mongoose.set('strictQuery', true);
@@ -17,11 +19,14 @@ beforeAll(async () => {
         password: 'sekret'
     });
     token = response.body.token;
+    const testUser = await User.findOne({ username: 'root' });
+    user = testUser;
 }, 100000);
 
 beforeEach(async () => {
     await Blog.deleteMany({});
     for (const blog of helper.initialBlogs) {
+        blog.user = user._id;
         const newBlog = new Blog(blog);
         await newBlog.save();
     }
@@ -30,17 +35,18 @@ beforeEach(async () => {
 describe('初始化博客列表', () => {
     test('博客列表以 JSON 格式返回', async () => {
         await api.get('/api/blogs')
+            .auth(token, { type: 'bearer' })
             .expect(200)
             .expect('Content-Type', /application\/json/);
     });
 
     test('博客列表数量与初始数量一致', async () => {
-        const response = await api.get('/api/blogs');
+        const response = await api.get('/api/blogs').auth(token, { type: 'bearer' });
         expect(response.body).toHaveLength(helper.initialBlogs.length);
     });
 
     test('博客的唯一标识被命名为 id', async () => {
-        const response = await api.get('/api/blogs');
+        const response = await api.get('/api/blogs').auth(token, { type: 'bearer' });
         expect(response.body[0].id).toBeDefined();
     });
 });
@@ -50,6 +56,7 @@ describe('查询博客', () => {
         const blogs = await helper.blogsInDb();
         const blogToView = blogs[0];
         const resultBlog = await api.get(`/api/blogs/${blogToView.id}`)
+            .auth(token, { type: 'bearer' })
             .expect(200)
             .expect('Content-Type', /application\/json/);
         const processedBlogToView = JSON.parse(JSON.stringify(blogToView));
@@ -58,12 +65,12 @@ describe('查询博客', () => {
 
     test('查询 ID 格式正确但不存在的博客', async () => {
         const validExistingId = await helper.nonExistingId();
-        await api.get(`/api/blogs/${validExistingId}`).expect(404);
+        await api.get(`/api/blogs/${validExistingId}`).auth(token, { type: 'bearer' }).expect(404);
     });
 
     test('查询 ID 格式不正确的博客', async () => {
         const invalidId = 12345;
-        await api.get(`/api/blogs/${invalidId}`).expect(400);
+        await api.get(`/api/blogs/${invalidId}`).auth(token, { type: 'bearer' }).expect(400);
     });
 });
 
@@ -181,9 +188,11 @@ describe('删除博客', () => {
         const urls = blogsAtEnd.map(blog => blog.url);
         expect(urls).not.toContain(blogsAtStart[blogsAtStart.length - 1].url);
     });
+
     test('删除非本人的博客', async () => {
+        const nonUserBlogId = await helper.nonUserBlog();
         const blogsAtStart = await helper.blogsInDb();
-        await api.delete(`/api/blogs/${blogsAtStart[0].id}`)
+        await api.delete(`/api/blogs/${nonUserBlogId.toString()}`)
             .auth(token, { type: 'bearer' })
             .expect(403);
         const blogsAtEnd = await helper.blogsInDb();
