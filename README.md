@@ -54,9 +54,9 @@
 ### [Part 5 - 测试 React 应用](https://fullstackopen.com/zh/part5)
 > 在这一部分，我们回到前端，首先看一下测试 React 代码的不同可能性。 我们还将实现基于令牌的认证，这将使用户能够登录到我们的应用。
 
-- [ ] [完成前台的登录功能](https://fullstackopen.com/zh/part5/%E5%AE%8C%E6%88%90%E5%89%8D%E5%8F%B0%E7%9A%84%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD)
-- [ ] [props.children 与 proptypes](https://fullstackopen.com/zh/part5/props_children_%E4%B8%8E_proptypes)
-- [ ] [测试 React 应用](https://fullstackopen.com/zh/part5/%E6%B5%8B%E8%AF%95_react_%E5%BA%94%E7%94%A8)
+- [x] [完成前台的登录功能](https://fullstackopen.com/zh/part5/%E5%AE%8C%E6%88%90%E5%89%8D%E5%8F%B0%E7%9A%84%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD)
+- [x] [props.children 与 proptypes](https://fullstackopen.com/zh/part5/props_children_%E4%B8%8E_proptypes)
+- [x] [测试 React 应用](https://fullstackopen.com/zh/part5/%E6%B5%8B%E8%AF%95_react_%E5%BA%94%E7%94%A8)
 - [ ] [端到端测试](https://fullstackopen.com/zh/part5/%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95)
 
 ### [Part 6 - 利用 Redux 进行状态管理](https://fullstackopen.com/zh/part6)

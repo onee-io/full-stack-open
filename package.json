@@ -7,7 +7,7 @@
     "start:react": "react-scripts start",
     "build": "react-scripts build",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand --detectOpenHandles",
-    "test:react": "react-scripts test",
+    "test:react": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "server": "json-server -p3001 --watch server/db.json",
     "dev": "cross-env NODE_ENV=development nodemon server/index.js",
@@ -59,8 +59,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001",
-  "jest": {
-    "testEnvironment": "node"
-  }
+  "proxy": "http://localhost:3001"
 }

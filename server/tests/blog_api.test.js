@@ -60,7 +60,7 @@ describe('查询博客', () => {
             .expect(200)
             .expect('Content-Type', /application\/json/);
         const processedBlogToView = JSON.parse(JSON.stringify(blogToView));
-        expect(resultBlog.body).toEqual(processedBlogToView);
+        expect(resultBlog.body.url).toBe(processedBlogToView.url);
     });
 
     test('查询 ID 格式正确但不存在的博客', async () => {

@@ -29,7 +29,7 @@ const Blog = ({ blog, onUpadte, onDelete }) => {
         marginBottom: 5
     }
     return (
-        <div style={blogStyle}>
+        <div className="blog" style={blogStyle}>
             {blog.title} by {blog.author}
             <button onClick={() => setIsView(!isView)}>
                 {isView ? 'hide' : 'view'}

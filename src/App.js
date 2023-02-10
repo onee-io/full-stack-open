@@ -5,6 +5,7 @@ import noteService from './services/notes';
 import loginService from './services/login';
 import Togglable from "./components/Togglable";
 import LoginForm from './components/LoginForm';
+import NoteForm from './components/NoteForm';
 
 const App = () => {
     const [notes, setNotes] = useState([]);
@@ -98,29 +99,6 @@ const App = () => {
             <Footer />
         </div>
     )
-}
-
-const NoteForm = ({ createNote }) => {
-    const [newNote, setNewNote] = useState('');
-    const handleNoteChange = (event) => setNewNote(event.target.value);
-    // 处理笔记创建事件
-    const addNote = async (event) => {
-        event.preventDefault();
-        await createNote({
-            content: newNote,
-            important: Math.random() < 0.5
-        });
-        setNewNote('');
-    }
-    return (
-        <div>
-            <h2>Create a new note</h2>
-            <form onSubmit={addNote}>
-                <input value={newNote} onChange={handleNoteChange} />
-                <button type='submit'>save</button>
-            </form>
-        </div>
-    );
 }
 
 const Footer = () => {

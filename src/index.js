@@ -9,7 +9,7 @@ import Countries from './part2/Countries';
 import './index.css'
 import Blogs from './part5/Blogs';
 
-// ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 
 // Part1
 // ReactDOM.createRoot(document.getElementById('root')).render(<Unicafe />)
@@ -21,4 +21,4 @@ import Blogs from './part5/Blogs';
 // ReactDOM.createRoot(document.getElementById('root')).render(<Countries />)
 
 // Part5
-ReactDOM.createRoot(document.getElementById('root')).render(<Blogs />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<Blogs />)
