@@ -57,12 +57,12 @@
 - [x] [完成前台的登录功能](https://fullstackopen.com/zh/part5/%E5%AE%8C%E6%88%90%E5%89%8D%E5%8F%B0%E7%9A%84%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD)
 - [x] [props.children 与 proptypes](https://fullstackopen.com/zh/part5/props_children_%E4%B8%8E_proptypes)
 - [x] [测试 React 应用](https://fullstackopen.com/zh/part5/%E6%B5%8B%E8%AF%95_react_%E5%BA%94%E7%94%A8)
-- [ ] [端到端测试](https://fullstackopen.com/zh/part5/%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95)
+- [x] [端到端测试](https://fullstackopen.com/zh/part5/%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95)
 
 ### [Part 6 - 利用 Redux 进行状态管理](https://fullstackopen.com/zh/part6)
 > 到目前为止，我们已经将应用的状态和状态逻辑直接放在 React 组件内。当应用规模扩大时，状态管理应该被移到 React 组件之外。在这一部分，我们将介绍 Redux 库，它是目前最流行的管理 React 应用状态的解决方案。
 
-- [ ] [Flux 架构与 Redux](https://fullstackopen.com/zh/part6/flux%E6%9E%B6%E6%9E%84%E4%B8%8E_redux)
+- [x] [Flux 架构与 Redux](https://fullstackopen.com/zh/part6/flux%E6%9E%B6%E6%9E%84%E4%B8%8E_redux)
 - [ ] [再来点 reducers](https://fullstackopen.com/zh/part6/%E5%86%8D%E6%9D%A5%E7%82%B9_reducers)
 - [ ] [在 Redux 应用中与后端通信](https://fullstackopen.com/zh/part6/%E5%9C%A8_redux%E5%BA%94%E7%94%A8%E4%B8%AD%E4%B8%8E%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1)
 - [ ] [connect 方法](https://fullstackopen.com/zh/part6/connect%E6%96%B9%E6%B3%95)
