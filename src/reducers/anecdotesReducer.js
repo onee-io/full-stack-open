@@ -1,3 +1,5 @@
+import { createSlice } from "@reduxjs/toolkit"
+
 const anecdotesAtStart = [
     'If it hurts, do it more often',
     'Adding manpower to a late software project makes it later!',
@@ -19,30 +21,43 @@ const asObject = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject)
 
-const reducer = (state = initialState, action) => {
-    console.log('state now: ', state)
-    console.log('action', action)
-    switch (action.type) {
-        case 'VOTE':
-            return state.map(item => item.id !== action.data.id ? item : { ...item, votes: item.votes + 1 });
-        case 'NEW_ANECDOTE':
-            return [...state, action.data];
+const anecdoteSlice = createSlice({
+    name: 'anecdotes',
+    initialState,
+    reducers: {
+        vote(state, action) {
+            return state.map(item => item.id !== action.id ? item : { ...item, votes: item.votes + 1 });
+        },
+        newAnecdote(state, action) {
+            state.push(asObject(action.content));
+        }
     }
-    return state;
-}
+});
 
-export const anecdoteVote = (id) => {
-    return {
-        type: 'VOTE',
-        data: { id }
-    }
-}
 
-export const createAnecdote = (anecdote) => {
-    return {
-        type: 'NEW_ANECDOTE',
-        data: asObject(anecdote)
-    }
-}
+// const reducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case 'VOTE':
+//             return state.map(item => item.id !== action.data.id ? item : { ...item, votes: item.votes + 1 });
+//         case 'NEW_ANECDOTE':
+//             return [...state, action.data];
+//     }
+//     return state;
+// }
 
-export default reducer
+// export const anecdoteVote = (id) => {
+//     return {
+//         type: 'VOTE',
+//         data: { id }
+//     }
+// }
+
+// export const createAnecdote = (anecdote) => {
+//     return {
+//         type: 'NEW_ANECDOTE',
+//         data: asObject(anecdote)
+//     }
+// }
+
+export const { vote, newAnecdote } = anecdoteSlice.actions;
+export default anecdoteSlice.reducer;

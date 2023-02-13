@@ -65,6 +65,7 @@
 - [x] [Flux 架构与 Redux](https://fullstackopen.com/zh/part6/flux%E6%9E%B6%E6%9E%84%E4%B8%8E_redux)
 - [ ] [再来点 reducers](https://fullstackopen.com/zh/part6/%E5%86%8D%E6%9D%A5%E7%82%B9_reducers)
 - [ ] [在 Redux 应用中与后端通信](https://fullstackopen.com/zh/part6/%E5%9C%A8_redux%E5%BA%94%E7%94%A8%E4%B8%AD%E4%B8%8E%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1)
+- [ ] [React Query、useReducer 和上下文](https://fullstackopen.com/en/part6/react_query_use_reducer_and_the_context)
 - [ ] [connect 方法](https://fullstackopen.com/zh/part6/connect%E6%96%B9%E6%B3%95)
 
 ### [Part 7 - React router、自定义 hook，利用 CSS 和 webpack 给 app 添加样式](https://fullstackopen.com/zh/part7)

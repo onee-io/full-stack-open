@@ -1,11 +1,15 @@
-import AnecdoteForm from '../components/AnecdoteForm'
-import AnecdoteList from '../components/AnecdoteList'
+import AnecdoteForm from '../components/AnecdoteForm';
+import AnecdoteList from '../components/AnecdoteList';
+import Notice from '../components/Notice';
+import TextFilter from '../components/TextFilter';
 
 const AnecdotesRedux = () => (
     <div>
         <h2>Anecdotes</h2>
-        <AnecdoteForm />
+        <Notice />
+        <TextFilter />
         <AnecdoteList />
+        <AnecdoteForm />
     </div>
 )
 
