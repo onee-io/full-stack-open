@@ -4,14 +4,19 @@ const slice = createSlice({
     name: 'notice',
     initialState: '',
     reducers: {
-        alertNotice(state, action) {
-            return action.message;
-        },
-        clearNotice(state, action) {
-            return ''
+        setMessage(state, action) {
+            return action.payload;
         }
     }
 });
 
-export const { alertNotice, clearNotice } = slice.actions;
+export const { setMessage } = slice.actions;
+
+export const setNotification = (message, timeout) => {
+    return async dispatch => {
+        dispatch(setMessage(message));
+        setTimeout(() => dispatch(setMessage('')), timeout);
+    };
+}
+
 export default slice.reducer;

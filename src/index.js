@@ -1,13 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { combineReducers, createStore } from 'redux';
-import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import noteReducer from './reducers/noteReducer';
-import anecdoteReducer from './reducers/anecdotesReducer';
-import filterReducer from './reducers/filterReducer';
-import textFilterReducer from './reducers/textFilterReducer';
-import noticeReducer from './reducers/noticeReducer';
+import store from './store';
 import './index.css';
 import Anecdotes from './part1/Anecdotes';
 import App from './App';
@@ -18,21 +12,6 @@ import Countries from './part2/Countries';
 import Blogs from './part5/Blogs';
 import AnecdotesRedux from './part6/AnecdotesRedux';
 import NotesRedux from './part6/NotesRedux';
-
-const store = configureStore({
-    reducer: {
-        notes: noteReducer,
-        anecdotes: anecdoteReducer,
-        filter: filterReducer,
-        textFilter: textFilterReducer,
-        notice: noticeReducer
-    }
-})
-
-console.log(store.getState())
-
-// const store = createStore(reducer);
-// const store = createStore(anecdoteReducer);
 
 // ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 

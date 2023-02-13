@@ -5,10 +5,10 @@ const slice = createSlice({
     initialState: '',
     reducers: {
         filterChange(state, action) {
-            return action.filter
+            return action.payload;
         }
     }
 })
 
-export const { textFilter } = slice.actions;
+export const { filterChange } = slice.actions;
 export default slice.reducer;
