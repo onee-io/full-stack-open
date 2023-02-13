@@ -11,7 +11,7 @@ const App = () => {
     const [notes, setNotes] = useState([]);
     const [showAll, setShowAll] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState(null);
     // 通知控制
     const showErrorMessage = (_message) => {
         setErrorMessage(_message);
@@ -72,7 +72,11 @@ const App = () => {
             <h1>Notes</h1>
             <Notification message={errorMessage} isSuccess={false} />
             {user === null
-                ? <LoginForm handleLogin={handleLogin} />
+                ? <div>
+                    <Togglable buttonLabel='login'>
+                        <LoginForm handleLogin={handleLogin} />
+                    </Togglable>
+                </div>
                 : <div>
                     <p>{user.name} logged-in</p>
                     {

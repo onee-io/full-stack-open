@@ -96,7 +96,7 @@ const BlogList = ({ onBlogCreated }) => {
     }
     return (
         <div>
-            <Togglable buttonLabel='new note' ref={blogFromRef}>
+            <Togglable buttonLabel='new blog' ref={blogFromRef}>
                 <CreateBlogForm handleCreated={handleCreated} />
             </Togglable>
             {blogs.sort((a, b) => b.likes - a.likes).map(blog =>
@@ -128,13 +128,13 @@ const CreateBlogForm = ({ handleCreated }) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    title: <input value={title} onChange={({ target }) => setTitle(target.value)} />
+                    title: <input id='title' value={title} onChange={({ target }) => setTitle(target.value)} />
                 </div>
                 <div>
-                    author: <input value={author} onChange={({ target }) => setAuthor(target.value)} />
+                    author: <input id='author' value={author} onChange={({ target }) => setAuthor(target.value)} />
                 </div>
                 <div>
-                    url: <input value={url} onChange={({ target }) => setUrl(target.value)} />
+                    url: <input id='url' value={url} onChange={({ target }) => setUrl(target.value)} />
                 </div>
                 <button type="submit">create</button>
             </form>
