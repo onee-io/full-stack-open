@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './store';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './index.css';
 import Anecdotes from './part1/Anecdotes';
 import App from './App';
@@ -12,6 +13,10 @@ import Countries from './part2/Countries';
 import Blogs from './part5/Blogs';
 import AnecdotesRedux from './part6/AnecdotesRedux';
 import NotesRedux from './part6/NotesRedux';
+import NotesQuery from './part6/NotesQuery';
+import Counter from './part6/Counter';
+
+// const queryClient = new QueryClient();
 
 // ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 
@@ -33,8 +38,14 @@ import NotesRedux from './part6/NotesRedux';
 //         <NotesRedux />
 //     </Provider>
 // )
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <Provider store={store}>
-        <AnecdotesRedux />
-    </Provider>
-)
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//     <Provider store={store}>
+//         <AnecdotesRedux />
+//     </Provider>
+// )
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//     <QueryClientProvider client={queryClient}>
+//         <NotesQuery />
+//     </QueryClientProvider>
+// )
+ReactDOM.createRoot(document.getElementById('root')).render(<Counter />)

@@ -63,10 +63,10 @@
 > 到目前为止，我们已经将应用的状态和状态逻辑直接放在 React 组件内。当应用规模扩大时，状态管理应该被移到 React 组件之外。在这一部分，我们将介绍 Redux 库，它是目前最流行的管理 React 应用状态的解决方案。
 
 - [x] [Flux 架构与 Redux](https://fullstackopen.com/zh/part6/flux%E6%9E%B6%E6%9E%84%E4%B8%8E_redux)
-- [ ] [再来点 reducers](https://fullstackopen.com/zh/part6/%E5%86%8D%E6%9D%A5%E7%82%B9_reducers)
-- [ ] [在 Redux 应用中与后端通信](https://fullstackopen.com/zh/part6/%E5%9C%A8_redux%E5%BA%94%E7%94%A8%E4%B8%AD%E4%B8%8E%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1)
-- [ ] [React Query、useReducer 和上下文](https://fullstackopen.com/en/part6/react_query_use_reducer_and_the_context)
-- [ ] [connect 方法](https://fullstackopen.com/zh/part6/connect%E6%96%B9%E6%B3%95)
+- [x] [再来点 reducers](https://fullstackopen.com/zh/part6/%E5%86%8D%E6%9D%A5%E7%82%B9_reducers)
+- [x] [在 Redux 应用中与后端通信](https://fullstackopen.com/zh/part6/%E5%9C%A8_redux%E5%BA%94%E7%94%A8%E4%B8%AD%E4%B8%8E%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1)
+- [x] [React Query、useReducer 和上下文](https://fullstackopen.com/en/part6/react_query_use_reducer_and_the_context)
+- [x] [connect 方法（旧）](https://fullstackopen.com/zh/part6/connect%E6%96%B9%E6%B3%95)
 
 ### [Part 7 - React router、自定义 hook，利用 CSS 和 webpack 给 app 添加样式](https://fullstackopen.com/zh/part7)
 > 本课程的第七章节涉及到几个不同的主题。首先，我们将熟悉 React router。React 路由器帮助我们把应用分成不同的视图，这些视图根据浏览器地址栏中的 URL 来显示。在这之后，我们将研究一些向 React 应用添加 CSS 样式的方法。在整个课程中，我们使用 create-react-app 来生成我们应用的主体。这一次，我们将看看底层：我们将学习 Webpack 如何工作，以及我们如何使用它来配置应用。我们还将看看钩子函数以及如何定义一个自定义钩子。
