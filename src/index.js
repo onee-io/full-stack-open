@@ -18,6 +18,8 @@ import Counter from './part6/Counter';
 import Routers from './part7/Routers';
 import AnecdoteRouter from './part7/AnecdoteRouter';
 import { BrowserRouter } from 'react-router-dom';
+import CountryHook from './part7/CountryHook';
+import UltimateHook from './part7/UltimateHook';
 
 // const queryClient = new QueryClient();
 
@@ -55,8 +57,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 // Part7
 // ReactDOM.createRoot(document.getElementById('root')).render(<Routers />)
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-        <AnecdoteRouter />
-    </BrowserRouter>
-)
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//     <BrowserRouter>
+//         <AnecdoteRouter />
+//     </BrowserRouter>
+// )
+// ReactDOM.createRoot(document.getElementById('root')).render(<CountryHook />)
+ReactDOM.createRoot(document.getElementById('root')).render(<UltimateHook />)
