@@ -15,6 +15,9 @@ import AnecdotesRedux from './part6/AnecdotesRedux';
 import NotesRedux from './part6/NotesRedux';
 import NotesQuery from './part6/NotesQuery';
 import Counter from './part6/Counter';
+import Routers from './part7/Routers';
+import AnecdoteRouter from './part7/AnecdoteRouter';
+import { BrowserRouter } from 'react-router-dom';
 
 // const queryClient = new QueryClient();
 
@@ -48,4 +51,12 @@ import Counter from './part6/Counter';
 //         <NotesQuery />
 //     </QueryClientProvider>
 // )
-ReactDOM.createRoot(document.getElementById('root')).render(<Counter />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<Counter />)
+
+// Part7
+// ReactDOM.createRoot(document.getElementById('root')).render(<Routers />)
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <BrowserRouter>
+        <AnecdoteRouter />
+    </BrowserRouter>
+)
