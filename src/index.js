@@ -20,6 +20,8 @@ import AnecdoteRouter from './part7/AnecdoteRouter';
 import { BrowserRouter } from 'react-router-dom';
 import CountryHook from './part7/CountryHook';
 import UltimateHook from './part7/UltimateHook';
+import RoutersBootstrap from './part7/RoutersBootstrap';
+import RoutersMaterial from './part7/RoutersMaterial';
 
 // const queryClient = new QueryClient();
 
@@ -63,4 +65,6 @@ import UltimateHook from './part7/UltimateHook';
 //     </BrowserRouter>
 // )
 // ReactDOM.createRoot(document.getElementById('root')).render(<CountryHook />)
-ReactDOM.createRoot(document.getElementById('root')).render(<UltimateHook />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<UltimateHook />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<RoutersBootstrap />)
+ReactDOM.createRoot(document.getElementById('root')).render(<RoutersMaterial />)

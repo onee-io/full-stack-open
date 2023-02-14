@@ -71,9 +71,9 @@
 ### [Part 7 - React router、自定义 hook，利用 CSS 和 webpack 给 app 添加样式](https://fullstackopen.com/zh/part7)
 > 本课程的第七章节涉及到几个不同的主题。首先，我们将熟悉 React router。React 路由器帮助我们把应用分成不同的视图，这些视图根据浏览器地址栏中的 URL 来显示。在这之后，我们将研究一些向 React 应用添加 CSS 样式的方法。在整个课程中，我们使用 create-react-app 来生成我们应用的主体。这一次，我们将看看底层：我们将学习 Webpack 如何工作，以及我们如何使用它来配置应用。我们还将看看钩子函数以及如何定义一个自定义钩子。
 
-- [ ] [React-router](https://fullstackopen.com/zh/part7/react_router)
-- [ ] [自定义 hooks](https://fullstackopen.com/zh/part7/%E8%87%AA%E5%AE%9A%E4%B9%89_hooks)
-- [ ] [样式进阶](https://fullstackopen.com/zh/part7/%E6%A0%B7%E5%BC%8F%E8%BF%9B%E9%98%B6)
+- [x] [React-router](https://fullstackopen.com/zh/part7/react_router)
+- [x] [自定义 hooks](https://fullstackopen.com/zh/part7/%E8%87%AA%E5%AE%9A%E4%B9%89_hooks)
+- [x] [样式进阶](https://fullstackopen.com/zh/part7/%E6%A0%B7%E5%BC%8F%E8%BF%9B%E9%98%B6)
 - [ ] [Webpack](https://fullstackopen.com/zh/part7/webpack)
 - [ ] [各种各样的 Class components](https://fullstackopen.com/zh/part7/%E5%90%84%E7%A7%8D%E5%90%84%E6%A0%B7%E7%9A%84_class_components)
 - [ ] [练习：扩展你的博客列表](https://fullstackopen.com/zh/part7/%E7%BB%83%E4%B9%A0%EF%BC%9A%E6%89%A9%E5%B1%95%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%97%E8%A1%A8)
