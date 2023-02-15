@@ -1,24 +1,24 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
-import blogService from '../services/blogs';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteBlog, updateBlog } from "../reducers/blogReducer";
 
-const Blog = ({ blog, onUpadte, onDelete }) => {
+const Blog = ({ blog }) => {
+    const dispatch = useDispatch();
     const [isView, setIsView] = useState(false);
     // 点赞功能
     const handleLike = async () => {
-        const updatedBlog = await blogService.updateBlog({
+        dispatch(updateBlog({
             ...blog,
             likes: blog.likes + 1,
             user: blog.user.id
-        });
-        onUpadte(updatedBlog);
+        }));
     }
     // 删除功能
     const handleDelete = async () => {
         const isConfirm = window.confirm(`Remove blog ${blog.title} bu ${blog.author}`);
         if (isConfirm) {
-            await blogService.deleteBlog(blog.id);
-            onDelete(blog.id);
+            dispatch(deleteBlog(blog.id));
         }
     }
     const blogStyle = {
@@ -50,9 +50,7 @@ const Blog = ({ blog, onUpadte, onDelete }) => {
 }
 
 Blog.propTypes = {
-    blog: PropTypes.object.isRequired,
-    onUpadte: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
+    blog: PropTypes.object.isRequired
 }
 
 export default Blog;

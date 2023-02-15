@@ -22,6 +22,7 @@ import CountryHook from './part7/CountryHook';
 import UltimateHook from './part7/UltimateHook';
 import RoutersBootstrap from './part7/RoutersBootstrap';
 import RoutersMaterial from './part7/RoutersMaterial';
+import UltimateBlogs from './part7/UltimateBlogs';
 
 // const queryClient = new QueryClient();
 
@@ -67,4 +68,11 @@ import RoutersMaterial from './part7/RoutersMaterial';
 // ReactDOM.createRoot(document.getElementById('root')).render(<CountryHook />)
 // ReactDOM.createRoot(document.getElementById('root')).render(<UltimateHook />)
 // ReactDOM.createRoot(document.getElementById('root')).render(<RoutersBootstrap />)
-ReactDOM.createRoot(document.getElementById('root')).render(<RoutersMaterial />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<RoutersMaterial />)
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <UltimateBlogs />
+        </BrowserRouter>
+    </Provider>
+)

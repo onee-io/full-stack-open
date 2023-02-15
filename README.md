@@ -74,9 +74,9 @@
 - [x] [React-router](https://fullstackopen.com/zh/part7/react_router)
 - [x] [自定义 hooks](https://fullstackopen.com/zh/part7/%E8%87%AA%E5%AE%9A%E4%B9%89_hooks)
 - [x] [样式进阶](https://fullstackopen.com/zh/part7/%E6%A0%B7%E5%BC%8F%E8%BF%9B%E9%98%B6)
-- [ ] [Webpack](https://fullstackopen.com/zh/part7/webpack)
-- [ ] [各种各样的 Class components](https://fullstackopen.com/zh/part7/%E5%90%84%E7%A7%8D%E5%90%84%E6%A0%B7%E7%9A%84_class_components)
-- [ ] [练习：扩展你的博客列表](https://fullstackopen.com/zh/part7/%E7%BB%83%E4%B9%A0%EF%BC%9A%E6%89%A9%E5%B1%95%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%97%E8%A1%A8)
+- [x] [Webpack](https://fullstackopen.com/zh/part7/webpack)
+- [x] [各种各样的 Class components](https://fullstackopen.com/zh/part7/%E5%90%84%E7%A7%8D%E5%90%84%E6%A0%B7%E7%9A%84_class_components)
+- [x] [练习：扩展你的博客列表](https://fullstackopen.com/zh/part7/%E7%BB%83%E4%B9%A0%EF%BC%9A%E6%89%A9%E5%B1%95%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%97%E8%A1%A8)
 
 ### [Part 8 - GraphQL](https://fullstackopen.com/zh/part8)
 > 这部分课程是关于 GraphQL 的，Facebook 在浏览器和服务器之间的通信中替代了 REST。

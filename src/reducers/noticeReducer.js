@@ -12,7 +12,7 @@ const slice = createSlice({
 
 export const { setMessage } = slice.actions;
 
-export const setNotification = (message, timeout) => {
+export const setNotification = (message, timeout = 5000) => {
     return async dispatch => {
         dispatch(setMessage(message));
         setTimeout(() => dispatch(setMessage('')), timeout);

@@ -1,3 +1,7 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 h1 {
     color: green;
     font-style: italic;
@@ -24,4 +28,4 @@ h1 {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
-}
+} 
